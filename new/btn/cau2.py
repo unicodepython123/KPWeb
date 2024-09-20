@@ -14,24 +14,20 @@ def getLink(url):
 
 def getPostLink(hyperlink):
     hyperPostLink = []
-    pattern = '<div class="row10"><a class="title1" href="(.*?)">.*?</a></div>'
+    # pattern = f'<div class="row10"><a class="title1(\sphoto)" href="(.*?)">.*?</a></div>'
+    pattern = r'<div class="row10"><a class="title1(\sphoto)?" href="(.*?)">.*?</a></div>'
     for link in hyperlink:
         print('**Vist link', link)
         print('...')
         html = requests.get(link).text
         PostLink =  re.findall(pattern, html)
         for i in range (0, len(PostLink)):
-            PostLink[i] = 'https://baodaklak.vn/' + PostLink[i]
+            PostLink[i] = 'https://baodaklak.vn/' + str(PostLink[i])
         hyperPostLink = hyperPostLink + [PostLink]
     return hyperPostLink
 
 hyperLink = getLink(url)
 hyperPostLink = getPostLink(hyperLink)
-# for i in range (0, len(hyperPostLink)):
-#     print ('trang', i + 1)
-#     for j in range (0, len(hyperPostLink[i])):
-#         print(hyperPostLink[i][j])
-        
 
 file_name = "cau2.txt"
 with open(file_name, 'w', encoding='utf-8') as file:
