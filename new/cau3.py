@@ -27,7 +27,7 @@ def getPostContent(hyperlink):
         for i in range(len(title)):
             str+=title[i].text + "\n"
             str+="- " + summary[i].text + "\n"   
-            str+="- " + time[i].text + "\n"    
+            # str+="- " + time[i].text + "\n"    
         hyperPostContent = hyperPostContent + [str]
     return hyperPostContent
 

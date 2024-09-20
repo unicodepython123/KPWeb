@@ -27,3 +27,8 @@ def getPostLink(hyperlink):
 
 hyperLink = getLink(url)
 hyperPostLink = getPostLink(hyperLink)
+for i in range (0, len(hyperPostLink)):
+    print ('trang', i + 1)
+    for j in range (0, len(hyperPostLink[i])):
+        print(hyperPostLink[i][j])
+        print('')
